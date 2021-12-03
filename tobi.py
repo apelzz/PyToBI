@@ -173,6 +173,7 @@ class TextGridOperations:
 
 		print("Tones and breaks have been annotated")
 		print("....................................")
+        
 
 	def createPromPoints(self,word):
 		word_s = word.xmin
@@ -304,7 +305,12 @@ if __name__ == '__main__':
 	import sys
 	path = sys.argv[1]
 	filename = sys.argv[2]
+	outPath = sys.argv[3]
 	pathIn = path + filename + "_mod4.TextGrid"
-
-	pathOut = path + filename + "_result.TextGrid"
+       
+	pathOut = outPath + filename + "_result.TextGrid"
+	#pathOut = path + filename + "_result.TextGrid"
 	iT = TextGridOperations(pathIn, pathOut)
+    
+	from merge_tgt import merge_tgt
+	merge_tgt(path + filename + ".TextGrid", pathOut, pathOut)
